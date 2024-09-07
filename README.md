@@ -1,8 +1,8 @@
-# Jackal-Jetson-Xavier-SDK
+# Jackal-Jetson-Xavier-NX-SDK
 
 ## Overview
 
-The **Jackal-Jetson-Xavier-SDK** repository provides a comprehensive software development kit (SDK) for integrating the Jackal robot with the NVIDIA Jetson Xavier NX hardware. This SDK allows users to leverage the Jetson Xavier NX's computational power to enhance the Jackal platform for advanced robotics applications.
+The **Jackal-Jetson-Xavier-NX-SDK** repository provides a comprehensive software development kit (SDK) for integrating the Jackal robot with the NVIDIA Jetson Xavier NX hardware. This SDK allows users to leverage the Jetson Xavier NX's computational power to enhance the Jackal platform for advanced robotics applications.
 
 ## Getting Started
 
