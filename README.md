@@ -1,20 +1,27 @@
-
----
-
 # Jackal-Jetson-Xavier-SDK
 
 ## Overview
 
-The Jackal-Jetson-Xavier-SDK repository provides a comprehensive software development kit (SDK) for integrating the Jackal robot with NVIDIA Jetson Xavier NX hardware. This SDK enables users to leverage the computational power of Jetson Xavier NX for advanced robotics applications using the Jackal platform.
+The **Jackal-Jetson-Xavier-SDK** repository provides a comprehensive software development kit (SDK) for integrating the Jackal robot with the NVIDIA Jetson Xavier NX hardware. This SDK allows users to leverage the Jetson Xavier NX's computational power to enhance the Jackal platform for advanced robotics applications.
 
 ## Getting Started
 
 ### Prerequisites
 
-- **NVIDIA Jetson Xavier NX**: Ensure you have a Jetson Xavier development board.
-- **Jackal Robot**: You should have access to a Jackal robot.
-- **+32Gb SD Card**: You should haven SD card of at least 32Gb.
-- **Linux Machine**: You need a linux machine to build the image.
+Before getting started, make sure you have the following:
+
+- **NVIDIA Jetson Xavier NX**: Ensure you have the Jetson Xavier NX development board.
+- **Jackal Robot**: Access to the Jackal robot is required.
+- **32GB+ SD Card**: A microSD card with at least 32GB of space.
+- **Linux Machine**: A Linux-based system (Ubuntu recommended) for building the image.
+- **Required Tools**: 
+  - `sgdisk` and `dd` utilities (for partitioning and flashing)
+  - `unzip` (for extracting files)
+
+To install these utilities on Ubuntu, you can run:
+```bash
+sudo apt-get install gdisk unzip
+```
 
 ### Installation
 
@@ -37,13 +44,19 @@ The Jackal-Jetson-Xavier-SDK repository provides a comprehensive software develo
    unzip image.zip
    ```
 
-4. **Create Empty Partitions on your target device** *(If your device is sdb, PLEASE CHANGE ACCORDINGLY TO YOUT DEVICE)*
+4. **Prepare the Target Device** 
+
+   Replace /dev/sdb with the correct device path (use lsblk to find your device):
+
+   Warning: Double-check your target device to avoid overwriting important data.
 
    ```bash
-   sudo sgdisk -l=backup_table.gpt /dev/sdb
+   sudo sgdisk -l=partitions_table.gpt /dev/sdb
    ```
 
 5. **Flash the Partitions**
+
+   Important: Adjust the device names (/dev/sdb1, /dev/sdb2, etc.) according to your system.
 
    ```bash
    sudo dd if=sdb1.img of=/dev/sdb1 bs=4M status=progress
