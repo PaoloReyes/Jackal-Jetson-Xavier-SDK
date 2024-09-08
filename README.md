@@ -35,7 +35,7 @@ sudo apt-get install gdisk unzip
 ```
 
 - **Optional**
-- `growpart` (for expanding the partitions described better in the following section)
+   - `growpart` (for expanding the partitions, described better in the Installation section)
 
 To install these utility on Ubuntu, you can run:
    ```bash
