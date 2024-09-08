@@ -28,10 +28,18 @@ Before getting started, make sure you have the following:
 - **Required Tools**: 
   - `sgdisk` and `dd` utilities (for partitioning and flashing)
   - `unzip` (for extracting files)
-
+  
 To install these utilities on Ubuntu, you can run:
 ```bash
 sudo apt-get install gdisk unzip
+```
+
+**Optional**
+- `growpart` (for expanding the partitions described better in the following section)
+
+To install these utilities on Ubuntu, you can run:
+```bash
+sudo apt-get install cloud-guest-utils
 ```
 
 ### Installation
@@ -57,9 +65,9 @@ sudo apt-get install gdisk unzip
 
 4. **Prepare the Target Device** 
 
-   Replace /dev/sdb with the correct device path (use lsblk to find your device):
+   **Important:** Replace /dev/sdb with the correct device path (use lsblk to find your device):
 
-   Warning: Double-check your target device to avoid overwriting important data.
+   **Warning:** Double-check your target device to avoid overwriting important data.
 
    ```bash
    sudo sgdisk -l=partitions_table.gpt /dev/sdb
@@ -67,7 +75,7 @@ sudo apt-get install gdisk unzip
 
 5. **Flash the Partitions**
 
-   Important: Adjust the device names (/dev/sdb1, /dev/sdb2, etc.) according to your system.
+   **Important:** Adjust the device names (/dev/sdb1, /dev/sdb2, etc.) according to your system.
 
    ```bash
    sudo dd if=sdb1.img of=/dev/sdb1 bs=4M status=progress
@@ -77,13 +85,29 @@ sudo apt-get install gdisk unzip
    sudo dd if=sdb22.img of=/dev/sdb22 bs=4M status=progress
    ```
 
-6. **Connect and Boot your Jetson Xavier NX with the SD**
+6. **(Optional) Resizing the main partition**
+
+   If your SD is bigger than 32GB, it's highly recommended to expand the main partition, so you can have more storage space.
+
+   ```bash
+   sudo growpart /dev/sdb 1
+   sudo resize2fs /dev/sdb1
+   ```
+
+   **Important:** Replace /dev/sdb with the correct device path (use lsblk to find your device):
+
+7. **Connect and Boot your Jetson Xavier NX with the SD**
 
 ## Usage
 
-- Default User: tomatoxplorers
+Once you have successfully flashed the partitions on the Jetson Xavier NX, it’s highly recommended to connect the device to a monitor to proceed with the initial configuration process.
 
-- Password: Riku254
+By default, the pre-installed image contains a user account with the following credentials:
+
+
+- **Default User:** tomatoxplorers
+
+- **Password:** Riku254
 
 ### TeleOperation
 
@@ -110,8 +134,23 @@ From now your controller should auto pair each time you press the "PS" button.
 
 ### Default Controller Buttons
 
+Once you've paired the PS4 controller to the Jetson Xavier NX and made sure that Micro-Ros is connected to the drivers, you can start moving the Jackal robot from the controller.
+
+The speed control will be determined thanks to the left joystick of the controller (in the image below it can be seen as the K element of the diagram).
+
+![image](.images/ps4_controller_front.jpg (Diagram of the front of an PS4 controller))
+
+By design, the program has a security lock so it doesn't move with only the joystick, so you'll need to press R1 or L1 buttons (The D and A elements on the image below).
+
+L1 button is for a lower speed, while R1 is used for a higher speed. You'll need to press either R1 or L1 button, and move the Left Stick at the same time for moving.
+
+![iamge2](.images/ps4_controller_side.jpg (Diagram of the side of an PS4 controller))
+
+
 ## Contact
 
-For questions or support, please open an issue on the [GitHub repository](https://github.com/PaoloReyes/Jackal-Jetson-Xavier-NX-SDK/issues) or contact the project maintainer at [paolo.alfonso.reyes@gmail.com](mailto:paolo.alfonso.reyes@gmail.com).
+For questions or support, please open an issue on the [GitHub repository](https://github.com/PaoloReyes/Jackal-Jetson-Xavier-NX-SDK/issues) or contact the project maintainer at 
+- [paolo.alfonso.reyes@gmail.com](mailto:paolo.alfonso.reyes@gmail.com)
 
+-  [ricardonavarro2003@gmail.com](mailto:ricardonavarro2003@gmail.com)
 ---
