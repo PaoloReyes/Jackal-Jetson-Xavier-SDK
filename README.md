@@ -24,7 +24,7 @@ Before getting started, make sure you have the following:
 - **NVIDIA Jetson Xavier NX**: Ensure you have the Jetson Xavier NX development board.
 - **Jackal Robot with Micro-ROS**: Access to the Jackal robot is required.
 - **32GB+ SD Card**: A microSD card with at least 32GB of space.
-- **Linux Machine**: A Linux-based system (Ubuntu recommended) for building the image.
+- **Linux Machine**: A Linux-based system (Ubuntu recommended) for building the image with at least 40 free GB.
 - **Required Tools**: 
   - `sgdisk` and `dd` utilities (for partitioning and flashing)
   - `unzip` (for extracting files)
@@ -34,12 +34,12 @@ To install these utilities on Ubuntu, you can run:
 sudo apt-get install gdisk unzip
 ```
 
-**Optional**
+- **Optional**
 - `growpart` (for expanding the partitions described better in the following section)
 
-To install these utilities on Ubuntu, you can run:
-```bash
-sudo apt-get install cloud-guest-utils
+To install these utility on Ubuntu, you can run:
+   ```bash
+   sudo apt-get install cloud-guest-utils
 ```
 
 ### Installation
@@ -65,7 +65,7 @@ sudo apt-get install cloud-guest-utils
 
 4. **Prepare the Target Device** 
 
-   **Important:** Replace /dev/sdb with the correct device path (use lsblk to find your device):
+   **Important:** Replace `/dev/sdb` with the correct device path (use lsblk to find your device):
 
    **Warning:** Double-check your target device to avoid overwriting important data.
 
@@ -94,8 +94,9 @@ sudo apt-get install cloud-guest-utils
    sudo resize2fs /dev/sdb1
    ```
 
-   **Important:** Replace /dev/sdb with the correct device path (use lsblk to find your device):
+   **Important:** Replace `/dev/sdb` with the correct device path (use lsblk to find your device), as well the `/dev/sdb1` with the correct partition path (this will also be shown by lsblk).
 
+  
 7. **Connect and Boot your Jetson Xavier NX with the SD**
 
 ## Usage
@@ -149,8 +150,8 @@ L1 button is for a lower speed, while R1 is used for a higher speed. You'll need
 
 ## Contact
 
-For questions or support, please open an issue on the [GitHub repository](https://github.com/PaoloReyes/Jackal-Jetson-Xavier-NX-SDK/issues) or contact the project maintainer at 
+For questions or support, please open an issue on the [GitHub repository](https://github.com/PaoloReyes/Jackal-Jetson-Xavier-NX-SDK/issues) or contact the project maintainers at 
 - [paolo.alfonso.reyes@gmail.com](mailto:paolo.alfonso.reyes@gmail.com)
 
--  [ricardonavarro2003@gmail.com](mailto:ricardonavarro2003@gmail.com)
+-  [ricardo.navgom@gmail.com](mailto:ricardo.navgom@gmail.com)
 ---
