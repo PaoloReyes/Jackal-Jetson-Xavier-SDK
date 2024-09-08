@@ -47,7 +47,7 @@ To install these utility on Ubuntu, you can run:
 1. **Clone the Repository**
 
    ```bash
-   git clone git@github.com:PaoloReyes/Jackal-Jetson-Xavier-NX-SDK.git
+   git clone https://github.com/PaoloReyes/Jackal-Jetson-Xavier-NX-SDK.git
    cd Jackal-Jetson-Xavier-SDK
    ```
 
